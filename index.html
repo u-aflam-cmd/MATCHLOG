@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MATCHLOG</title>
+
+    <link rel="stylesheet" href="MLOG.css">
+
+    <link rel="icon" type="image/png" href="MLOGO.png">
+    <link rel="icon" href="MLOGO.png">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">MATCHLOG</div>
+
+        <button id="themeButton" onclick="toggleTheme()">🌙</button>
+    </header>
+
+    <main>
+
+        <div class="welcome">
+
+    <h1>Football Match Tracker</h1>
+
+    <p>Record your matches, performances, and statistics.</p>
+
+    <button class="add-match-button" onclick="openMatchForm()">
+        ⚽ Add Match
+    </button>
+
+    <button class="view-matches-button" onclick="viewMatches()">
+        📊 View Matches
+    </button>
+
+    <button class="calendar-button" onclick="openCalendar()">
+        📅 Calendar
+    </button>
+
+</div>
+
+        <div id="matchForm" class="match-form">
+
+    <h2>⚽ Add Match</h2>
+
+    <input type="date" id="matchDate">
+
+    <input type="text" id="location" placeholder="Location">
+
+    <input type="text" id="team" placeholder="Your Team">
+
+    <input type="text" id="opponent" placeholder="Opponent">
+
+    <input type="text" id="score" placeholder="Final Score (e.g. 3-2)">
+
+    <input type="number" id="goals" placeholder="Your Goals" min="0">
+
+    <input type="number" id="assists" placeholder="Your Assists" min="0">
+
+    <input type="number" id="saves" placeholder="Your Saves" min="0">
+
+    <input type="number" id="rating" placeholder="Your Rating (0-10)" min="0" max="10" step="0.1">
+
+    <textarea id="notes" placeholder="Performance notes..."></textarea>
+
+    <div class="form-buttons">
+        <button onclick="saveMatch()">Save Match</button>
+        <button class="cancel-button" onclick="closeMatchForm()">Cancel</button>
+    </div>
+
+</div>
+
+<div id="matchList">
+    <button class="back-menu-button" onclick="backToMainMenu()">
+        ↩️ Back to Main Menu
+    </button>
+</div>
+
+<div id="matchDetails"></div>
+
+<div id="calendarView"></div>
+
+    </main>
+
+    <footer>
+        © 2026 MATCHLOG. All rights reserved.
+    </footer>
+
+    <script src="MLOG.js"></script>
+</body>
+</html>
