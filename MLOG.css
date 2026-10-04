@@ -567,7 +567,7 @@ body.dark-mode .record-stats p {
 
 .statistics-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
 }
 
@@ -871,4 +871,39 @@ body.dark-mode .calendar-no-match {
 
 .share-match-button:hover {
     background-color: #164dcc;
+}
+
+/* HAT-TRICK */
+
+.hat-trick-stat {
+    border: 2px solid #d4af37;
+    background: linear-gradient(135deg, #fffdf2, #fff8d6);
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.25);
+}
+
+.hat-trick-stat span {
+    font-size: 26px;
+}
+
+.hat-trick-stat strong {
+    color: #b8860b;
+}
+
+.hat-trick-stat p {
+    color: #8a6d1d;
+}
+
+/* DARK MODE HAT-TRICK */
+
+body.dark-mode .hat-trick-stat {
+    background: linear-gradient(135deg, #292613, #383116);
+    border-color: #d4af37;
+}
+
+body.dark-mode .hat-trick-stat strong {
+    color: #ffd75a;
+}
+
+body.dark-mode .hat-trick-stat p {
+    color: #d6bd68;
 }
