@@ -27,6 +27,7 @@ function saveMatch() {
         goals: document.getElementById("goals").value,
         assists: document.getElementById("assists").value,
         saves: document.getElementById("saves").value,
+        hatTricks: Number(document.getElementById("goals").value) >= 3,
         rating: document.getElementById("rating").value,
         notes: document.getElementById("notes").value
     };
@@ -190,12 +191,11 @@ function displayMatches() {
             <p>📅 ${match.date}</p>
             <p>📍 ${match.location || "No location"}</p>
 
-            <div class="match-stats">
-                <p>⚽ Goals: ${match.goals || 0}</p>
-                <p>🎯 Assists: ${match.assists || 0}</p>
-                <p>🧤 Saves: ${match.saves || 0}</p>
-                <p>⭐ Rating: ${match.rating || "N/A"}/10</p>
-            </div>
+            <div>⚽ Goals: ${match.goals}</div>
+<div>👟 Assists: ${match.assists}</div>
+<div>🧤 Saves: ${match.saves}</div>
+<div>🎩 Hat-Trick: ${Number(match.goals) >= 3 ? "Yes" : "No"}</div>
+<div>⭐ Rating: ${match.rating}</div>
 
             <p class="match-notes">
                 ${match.notes || "No performance notes."}
@@ -331,11 +331,38 @@ function viewMatchDetails(index) {
             </div>
 
             <div class="details-stats">
-                <p>⚽ <strong>Goals:</strong> ${match.goals || 0}</p>
-                <p>🎯 <strong>Assists:</strong> ${match.assists || 0}</p>
-                <p>🧤 <strong>Saves:</strong> ${match.saves || 0}</p>
-                <p>⭐ <strong>Rating:</strong> ${match.rating || "N/A"}/10</p>
-            </div>
+
+    <div class="stat-item">
+        <span>⚽</span>
+        <strong>${match.goals || 0}</strong>
+        <p>Goals</p>
+    </div>
+
+    <div class="stat-item">
+        <span>🎯</span>
+        <strong>${match.assists || 0}</strong>
+        <p>Assists</p>
+    </div>
+
+    <div class="stat-item">
+        <span>🧤</span>
+        <strong>${match.saves || 0}</strong>
+        <p>Saves</p>
+    </div>
+
+    <div class="stat-item">
+        <span>⭐</span>
+        <strong>${match.rating || "N/A"}</strong>
+        <p>Rating</p>
+    </div>
+
+    <div class="stat-item hat-trick-stat">
+        <span>🎩</span>
+        <strong>${Number(match.goals || 0) >= 3 ? "YES" : "NO"}</strong>
+        <p>Hat-Trick</p>
+    </div>
+
+</div>
 
             <p>
                 📝 <strong>Performance Notes:</strong>
@@ -432,6 +459,7 @@ function displayStatistics() {
     let totalGoals = 0;
     let totalAssists = 0;
     let totalSaves = 0;
+    let totalHatTricks = 0;
     let totalRating = 0;
     let ratedMatches = 0;
 
@@ -445,6 +473,9 @@ function displayStatistics() {
         totalGoals += Number(match.goals || 0);
         totalAssists += Number(match.assists || 0);
         totalSaves += Number(match.saves || 0);
+        if (Number(match.goals) >= 3) {
+    totalHatTricks++;
+}
 
         if (match.rating !== "" && match.rating != null) {
             const rating = Number(match.rating);
@@ -511,6 +542,12 @@ function displayStatistics() {
                     <span>🎯</span>
                     <strong>${totalAssists}</strong>
                     <p>Total Assists</p>
+                </div>
+
+                <div class="stat-item">
+                    <span class="stat-icon">🎩</span>
+                    <span class="stat-value">${totalHatTricks}</span>
+                    <span class="stat-label">Hat-Tricks</span>
                 </div>
 
                 <div class="stat-item">
@@ -834,6 +871,7 @@ Score: ${match.score}
 
 ⚽ Goals: ${match.goals || 0}
 🎯 Assists: ${match.assists || 0}
+🎩 Hat-Trick: ${Number(match.goals) >= 3 ? "Yes" : "No"}
 🧤 Saves: ${match.saves || 0}
 ⭐ Rating: ${match.rating || "N/A"}/10
 
