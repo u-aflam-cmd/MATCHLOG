@@ -545,9 +545,9 @@ function displayStatistics() {
                 </div>
 
                 <div class="stat-item">
-                    <span class="stat-icon">🎩</span>
-                    <span class="stat-value">${totalHatTricks}</span>
-                    <span class="stat-label">Hat-Tricks</span>
+                    <span>🎩</span>
+                    <strong>${totalHatTricks}</strong>
+                    <p>Total Hat-Tricks</p>
                 </div>
 
                 <div class="stat-item">
